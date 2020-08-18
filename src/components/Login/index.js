@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+import {username,password} from '../../config/config';
 import './Login.scss';
 import {userAuth} from '../../redux/actions/userAuth';
 
@@ -8,8 +8,8 @@ class Login extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            username:'',
-            password:''
+            username:username,
+            password:password
         }
     }
     handleChange = event => {

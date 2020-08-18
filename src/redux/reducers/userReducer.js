@@ -1,7 +1,7 @@
 import {LOGIN_USER} from '../types/userTypes';
 
 const initialState = {
-    currentUser:{}
+    currentUser:''
 }
 
 export default function userReducer(state = initialState, action) {
