@@ -1,5 +1,121 @@
+$baseColor: #398B93;
+$borderRadius: 10px;
+$padding: 10px;
+
 .Users{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    
+    border: 1px solid darken($baseColor, 5%);
+    border-radius: $borderRadius;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    max-width: calc(100% - 2em);
+    margin: 1em auto;
+    overflow: hidden;
+    width: 1200px;
+    
+
+    &-header{
+        background-color: darken($baseColor, 5%);
+        color: white;
+        font-size: 1.5em;
+        padding: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+        
+    }
+}
+.Users-table{
+    width: 100%;
+    background-color: lighten($baseColor, 30%);
+    td, th { 
+        color: darken($baseColor, 10%);
+        padding: $padding;
+        
+    }
+
+    td {
+        text-align: center;
+        vertical-align: middle;
+        
+        &:last-child {
+           font-size: 0.95em;
+           line-height: 1.4;
+           text-align: left;
+        }
+    }
+    th { 
+        background-color: lighten($baseColor, 50%);
+    }
+     
+    tr {     
+        &:nth-child(2n) { background-color: white; }
+        &:nth-child(2n+1) { background-color: lighten($baseColor, 55%) }
+    }    
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .Users{
+        width: 992px;
+        font-size:0.8em;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .Users{
+        width: 768px;
+        font-size:0.6em;
+        th,td{
+            padding: 5px;
+        }
+    }
+}
+@media screen and (max-width: 767px){
+    .Users-table, tr, td { 
+        display: block;
+    }
+    .Users-thead{
+        display: none;
+    }
+    
+    .User{
+        padding: 5px 0;
+        position: relative;
+        
+        td{
+            clear: both;
+            min-width: calc(93vw - 2em);
+            
+            text-align: right;
+            padding-right:$padding*2;
+            &::before{
+                content: attr(data-label);
+                padding-left: $padding;
+                float:left;
+            }   
+        }
+    }
+
+}
+
+@media screen and (max-width:480px){
+    
+    .Users-table, tr, td { 
+        display: block;
+    }
+    .Users-thead{
+        display: none;
+    }
+    
+    .User{
+        padding: 5px 0;
+        position: relative;
+        
+        td{
+            clear: both;
+            position: relative;
+            text-align: right;
+            &::before{
+                content: attr(data-label);
+                float:left;
+            }   
+        }
+    }
+
 }

@@ -4,15 +4,15 @@ import './User.scss';
 
 export function User({user}){
     return(
-        <section className='User'>
+        <tr className='User'>
         
-            <div>{user.id}</div>
-            <div>{user.first_name}</div>
-            <div>{user.is_active}</div>
-            <div>{user.is_superuser}</div>
-            <div>{user.last_login}</div>
-            <div>{user.last_name}</div>
-            <div>{user.username}</div>
-        </section>
+            <td data-label='id'>{user.id}</td>
+            <td data-label='first name'>{user.first_name}</td>
+            <td data-label='is active'>{user.is_active}</td>
+            <td data-label='is superuser'>{user.is_superuser}</td>
+            <td data-label='last login'>{user.last_login}</td>
+            <td data-label='last name'>{user.last_name}</td>
+            <td data-label='username'>{user.username}</td>
+        </tr>
     )
 }

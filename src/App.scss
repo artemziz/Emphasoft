@@ -1,10 +1,15 @@
+
 .App{
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 50px;
+    align-items: flex-start;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+    background-size: cover;
+    
+    
 }
-body,html,#root,.App{
-    min-height: 100%;
+body,html#root,.App{
+    min-height: 100vh;
     margin:0;
 }

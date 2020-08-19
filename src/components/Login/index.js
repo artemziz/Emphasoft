@@ -32,9 +32,8 @@ class Login extends React.Component{
     render(){
         return(
             <form onSubmit={this.handleSubmit} className="Login">
-                <h1 className="Login-title">Login</h1>
+                <h1 className="Login-title">Welcome</h1>
                 <div className="Login-username">
-                    <label>Username</label>
                     <input
                         name='username'
                         placeholder='Username'
@@ -43,7 +42,6 @@ class Login extends React.Component{
                     />
                 </div>
                 <div className="Login-password">
-                    <label>Password</label>
                     <input
                         type='password'
                         name='password'
