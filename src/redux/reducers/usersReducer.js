@@ -1,13 +1,13 @@
 import {GET_USERS} from '../types/usersTypes';
 
 const initialState = {
-    users:[]
+    listOfUsers:[]
 }
 
 export default function usersReducer(state = initialState, action){
     switch(action.type){
         case GET_USERS:
-            return {...state,users:action.payload};
+            return {...state,listOfUsers:action.payload};
         default:
             return state;
     }

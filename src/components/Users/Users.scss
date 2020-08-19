@@ -3,7 +3,16 @@ $borderRadius: 10px;
 $padding: 10px;
 
 .Users{
-    
+    .sortIcon{
+        display: inline-block;
+        width:10px;
+        margin-left: 5px;
+        height:10px;
+        background:url('../../icons/noun_arrow_6641.png');
+        background-size: cover;
+        transform: rotate(90deg);
+        cursor: pointer;
+    }
     border: 1px solid darken($baseColor, 5%);
     border-radius: $borderRadius;
     box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
@@ -69,6 +78,17 @@ $padding: 10px;
 @media screen and (max-width: 767px){
     .Users-table, tr, td { 
         display: block;
+    }
+    .Users-header{
+        position: fixed;
+        height: 50px;
+        left:0;
+        right:0;
+        top:0;
+        z-index: 10;
+    }
+    .Users-table{
+        margin-top:65px;
     }
     .Users-thead{
         display: none;

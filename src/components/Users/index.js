@@ -5,17 +5,38 @@ import {getUsers} from '../../redux/actions/getUsers';
 import {User} from '../User';
 import './Users.scss';
 
-function Users({username,users,getUsers}){
+function Users({listOfUsers,getUsers}){
+    const[users,setUsers] = useState([]);
+    const[isAsc,setIsAsc] = useState(true);
     useEffect(()=>{
         getUsers();
-    },[])
+    },[]);
+    useEffect(()=>{
+        // console.log(users);
+    },[users])
+    useEffect(()=>{
+        setUsers(listOfUsers);
+    },[listOfUsers]);
+    const sortById = (arr,isAsc) =>{
+        let result = arr.slice();
+        result.sort((a,b) => (a.id>b.id)?1:-1);
+        if(!isAsc) result.reverse();
+        return result;
+    }
+    const sortTable = () =>{
+        setUsers(sortById(users,isAsc));
+        setIsAsc(!isAsc);
+    }
     return(
         <div className="Users">
             <div className="Users-header">Users</div>
             <table cellSpacing="0" className="Users-table">
                 <thead className='Users-thead'>
                     <tr>
-                        <th>id</th>
+                        <th>
+                            id
+                            <div onClick={sortTable} className='sortIcon'></div>
+                        </th>
                         <th>first name</th>
                         <th>is active</th>
                         <th>is superuser</th>
@@ -25,13 +46,12 @@ function Users({username,users,getUsers}){
                     </tr>
                 </thead>
                 <tbody className='Users-tbody'>
-                    {Array.from(users.map(user => {
+                    {users.map(user => {
                         return <User key={user.id} user={user}/>
                         })
                     
-                    )}
-                </tbody>    
-            
+                    }
+                </tbody>         
             </table>
         </div>
     )
@@ -39,8 +59,7 @@ function Users({username,users,getUsers}){
 
 const mapStateToProps = (state) =>{
     return{
-        username:state.User.currentUser,
-        users:state.Users.users
+        listOfUsers:state.Users.listOfUsers
     }
 }
 

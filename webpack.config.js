@@ -46,6 +46,10 @@ module.exports = {
                     options: { sourceMap: true }
                   }
                 ]
+            },
+            {
+                test:/\.(png|jpg|svg)$/,
+                use:['file-loader']
             }
 
         ],
