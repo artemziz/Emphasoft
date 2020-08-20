@@ -9,7 +9,10 @@ class Login extends React.Component{
         super(props);
         this.state = {
             username:username,
-            password:password
+            usernameError:'',
+            password:password,
+            passwordError:'',
+            authError:''
         }
     }
     handleChange = event => {
@@ -17,22 +20,71 @@ class Login extends React.Component{
           [event.target.name]: event.target.value
         });
     }
+    checkFields = () =>{
+        let isError = false;
+        const usernamePattern = /^[\w.@+-]+$/;
+        const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+       
+        if(this.state.username.length>150 || !usernamePattern.test(this.state.username)){
+            this.setState({
+                usernameError:'Field is required.150 characters or fewer. Letters, digits and @/./+/-/_ only.'
+            })
+            isError = true;
+        }else{
+            this.setState({
+                usernameError:''
+            })
+        }
+        
+        if(this.state.password.length>128 || !passwordPattern.test(this.state.password)){
+            this.setState({
+                passwordError:'Field is required.128 characters or fewer. Letters, digits and @/./+/-/_ only'
+            })
+            isError = true;
+        }else{
+            this.setState({
+                passwordError:''
+            })
+        }
+        if(isError){
+            this.setState({
+                username:'',
+                password:'',
+                authError:''
+            })
+            return true;
+        }else{
+            return false;
+        } 
+    }
     handleSubmit = event => {
         event.preventDefault();
-        this.props.userAuth({
-            username:this.state.username,
-            password:this.state.password
-        });
-        this.setState({
-            username:'',
-            password:''
-        })
+        if(!this.checkFields()){
+            this.props.userAuth({
+                username:this.state.username,
+                password:this.state.password
+            }).then(({error}) =>{
+                if(error) this.setState({
+                    authError:error
+                })
+            });
+            
+            this.setState({
+                username:'',
+                usernameError:'',
+                password:'',
+                passwordError:''
+            })
+        }
     }
 
     render(){
         return(
             <form onSubmit={this.handleSubmit} className="Login">
                 <h1 className="Login-title">Welcome</h1>
+                    <div className="Login-error">
+                        {this.state.authError}
+                    </div>
                 <div className="Login-username">
                     <input
                         name='username'
@@ -40,6 +92,9 @@ class Login extends React.Component{
                         value={this.state.username}
                         onChange={this.handleChange}
                     />
+                    <div className="Login-error">
+                        {this.state.usernameError}
+                    </div>
                 </div>
                 <div className="Login-password">
                     <input
@@ -49,6 +104,9 @@ class Login extends React.Component{
                         value={this.state.password}
                         onChange={this.handleChange}
                     />
+                    <div className="Login-error">
+                        {this.state.passwordError}
+                    </div>
                 </div>
                 <div className="Login-submit">
                     <input type='submit'/>

@@ -17,6 +17,8 @@ export const userAuth = user =>{
         
         if(!!data.token){
             dispatch(loginUser(data.token));
+        }else{
+            return {error:'Wrong username or password'}
         }
 
     }
