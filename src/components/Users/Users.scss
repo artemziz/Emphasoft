@@ -5,9 +5,9 @@ $padding: 10px;
 .Users{
     &-SortIcon{
         display: inline-block;
-        width:10px;
+        width:1em;
         margin-left: 5px;
-        height:10px;
+        height:0.8em;
         background:url('../../icons/noun_arrow_6641.png');
         background-size: cover;
         transform: rotate(90deg);
@@ -28,13 +28,7 @@ $padding: 10px;
     
 
     &-header{
-        background-color: darken($baseColor, 5%);
-        color: white;
-        font-size: 1.5em;
         padding: 1rem;
-        text-align: center;
-        text-transform: uppercase;
-        
     }
 }
 .Users-table{

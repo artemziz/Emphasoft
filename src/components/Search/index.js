@@ -17,6 +17,6 @@ export default function Search({users,setUsers}){
         }))
     },[search])
     return(
-        <input value={search} onChange={handleSearch} className='Users-search' type="text"/>
+        <input value={search} placeholder='Search...' onChange={handleSearch} className='Header-search' type="text"/>
     )
 }

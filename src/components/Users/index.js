@@ -1,8 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
-import Search from '../Search';
 import Sort from '../Sort';
+import Header from '../Header';
 import {getUsers} from '../../redux/actions/getUsers';
 import {User} from '../User';
 import './Users.scss';
@@ -20,23 +20,20 @@ function Users({listOfUsers,getUsers}){
     
     return(
         <div className="Users">
-            <div className="Users-header">
-            Users
-            <Search setUsers = {setUsers} users = {users}/>
-            </div>
+            <Header setUsers = {setUsers} users = {users}/>
             <table cellSpacing="0" className="Users-table">
                 <thead className='Users-thead'>
                     <tr>
                         <th>
                             id
-                            <Sort setUsers = {setUsers} users = {users}/>
+                            <Sort className='Users-SortIcon' setUsers = {setUsers} users = {users}/>
                         </th>
+                        <th>username</th>
                         <th>first name</th>
+                        <th>last name</th>
                         <th>is active</th>
                         <th>is superuser</th>
                         <th>last login</th>
-                        <th>last name</th>
-                        <th>username</th>
                     </tr>
                 </thead>
                 <tbody className='Users-tbody'>

@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 
-export default function Sort({users,setUsers}){
+export default function Sort({className,users,setUsers}){
     const[isAsc,setIsAsc] = useState(true);
 
     const sortById = (arr,isAsc) =>{
@@ -14,8 +14,7 @@ export default function Sort({users,setUsers}){
         setUsers(sortById(users,isAsc));
     }
     const sortIconClassName = (isAsc) =>{
-        let className = 'Users-SortIcon';
-        if(!isAsc) className+=' Users-SortIcon_Desc';
+        if(!isAsc) className+=` ${className}_Desc`;
         return className;
     }
 
