@@ -11,9 +11,7 @@ function Users({listOfUsers,getUsers}){
     useEffect(()=>{
         getUsers();
     },[]);
-    useEffect(()=>{
-        // console.log(users);
-    },[users])
+    
     useEffect(()=>{
         setUsers(listOfUsers);
     },[listOfUsers]);
@@ -24,18 +22,26 @@ function Users({listOfUsers,getUsers}){
         return result;
     }
     const sortTable = () =>{
-        setUsers(sortById(users,isAsc));
         setIsAsc(!isAsc);
+        setUsers(sortById(users,isAsc));
+    }
+    const sortIconClassName = (isAsc) =>{
+        let className = 'Users-SortIcon';
+        if(!isAsc) className+=' Users-SortIcon_Desc';
+        return className;
     }
     return(
         <div className="Users">
-            <div className="Users-header">Users</div>
+            <div className="Users-header">
+            Users
+            
+            </div>
             <table cellSpacing="0" className="Users-table">
                 <thead className='Users-thead'>
                     <tr>
                         <th>
                             id
-                            <div onClick={sortTable} className='sortIcon'></div>
+                            <div onClick={sortTable} className={sortIconClassName(isAsc)}></div>
                         </th>
                         <th>first name</th>
                         <th>is active</th>

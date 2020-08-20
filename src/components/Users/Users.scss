@@ -3,7 +3,7 @@ $borderRadius: 10px;
 $padding: 10px;
 
 .Users{
-    .sortIcon{
+    &-SortIcon{
         display: inline-block;
         width:10px;
         margin-left: 5px;
@@ -11,7 +11,12 @@ $padding: 10px;
         background:url('../../icons/noun_arrow_6641.png');
         background-size: cover;
         transform: rotate(90deg);
+        transition: 0.2s;
         cursor: pointer;
+        &_Desc{
+            transform: rotate(-90deg);
+            
+        }
     }
     border: 1px solid darken($baseColor, 5%);
     border-radius: $borderRadius;
