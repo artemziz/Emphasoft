@@ -1,16 +1,15 @@
 import React,{useEffect, useState} from 'react';
+import {connect} from 'react-redux';
 
 import Users from './components/Users';
 import Login from './components/Login';
 import './App.scss';
 
-function App() {
+function App({token,loginUser}) {
     const [loggedIn,setLoggedIn] = useState(false);
     useEffect(()=>{
-        if(!!localStorage.getItem('token')){
-            setLoggedIn(true);
-        };
-    },[])
+        token ? setLoggedIn(true) : setLoggedIn(false);
+    },[token])
     return (
         <div className="App">
             {loggedIn ? (
@@ -23,5 +22,10 @@ function App() {
         </div>
     );
 }
+const mapStateToProps = (state) =>{
+    return{
+        token:state.User.token
+    }
+}
 
-export default App;
+export default connect(mapStateToProps,null)(App);
