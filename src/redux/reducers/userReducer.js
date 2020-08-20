@@ -1,7 +1,7 @@
 import {LOGIN,LOGOUT} from '../types/userTypes';
 
 const initialState = {
-    token:''
+    token:localStorage.getItem('token') || ''
 }
 
 export default function userReducer(state = initialState, action){

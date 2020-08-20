@@ -40,7 +40,7 @@ $padding: 10px;
     }
     &-logout{
         color: white;
-        font-size: 1.5em;
+        font-size: 1em;
         cursor: pointer;
     }
 }
@@ -49,8 +49,11 @@ $padding: 10px;
         &-name{
             display: none;
         }
-        &-SortIcon{
+        &-SortIcon,&-search,&-logout{
             display: block;
+        }
+        &-search{
+            width:150px;
         }
     }
 }
