@@ -27,7 +27,7 @@ class Login extends React.Component{
        
         if(this.state.username.length>150 || !usernamePattern.test(this.state.username)){
             this.setState({
-                usernameError:'Field is required.150 characters or fewer. Letters, digits and @/./+/-/_ only.'
+                usernameError:'Field is required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'
             })
             isError = true;
         }else{
@@ -35,17 +35,24 @@ class Login extends React.Component{
                 usernameError:''
             })
         }
-        
-        if(this.state.password.length>128 || !passwordPattern.test(this.state.password)){
+        if(this.state.password.length == 0){
             this.setState({
-                passwordError:'Field is required.128 characters or fewer'
+                passwordError:'Field is required. 128 characters or fewer'
             })
             isError = true;
         }else{
-            this.setState({
-                passwordError:''
-            })
+            if(this.state.password.length>128 || !passwordPattern.test(this.state.password)){
+                this.setState({
+                    passwordError:'Wrong password'
+                })
+                isError = true;
+            }else{
+                this.setState({
+                    passwordError:''
+                })
+            }
         }
+        
         if(isError){
             this.setState({
                 username:'',
