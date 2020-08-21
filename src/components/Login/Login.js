@@ -43,7 +43,8 @@ class Login extends React.Component{
         }else{
             if(this.state.password.length>128 || !passwordPattern.test(this.state.password)){
                 this.setState({
-                    passwordError:'Wrong password'
+                    authError:'Wrong username or password',
+                    passwordError:''
                 })
                 isError = true;
             }else{
@@ -57,7 +58,7 @@ class Login extends React.Component{
             this.setState({
                 username:'',
                 password:'',
-                authError:''
+                
             })
             return true;
         }else{
@@ -72,7 +73,9 @@ class Login extends React.Component{
                 password:this.state.password
             }).then((res) =>{
                 if(res) this.setState({
-                    authError:res.error
+                    authError:res.error,
+                    passwordError:'',
+                    usernameError:''
                 })
             });
             
