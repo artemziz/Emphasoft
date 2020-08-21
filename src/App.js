@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
-import Users from './components/Users';
-import Login from './components/Login';
+import Users from './components/Users/Users';
+import Login from './components/Login/Login';
 import './App.scss';
 
 function App({token, loginUser}) {

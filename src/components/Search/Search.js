@@ -7,7 +7,8 @@ export default function Search({users, setUsers}) {
     };
     useEffect(() =>{
         setUsers(users.slice().map((user) =>{
-            if (user.username.indexOf(search) === 0) {
+            if (user.username.toLowerCase()
+                .indexOf(search.toLowerCase()) === 0) {
                 user.isVisible = true;
             } else {
                 user.isVisible = false;
@@ -16,6 +17,11 @@ export default function Search({users, setUsers}) {
         }));
     }, [search]);
     return (
-        <input value={search} placeholder='Search...' onChange={handleSearch} className='Header-search' type="text"/>
+        <input
+            value={search}
+            placeholder='Search...'
+            onChange={handleSearch}
+            className='Header-search'
+            type="text"/>
     );
 }

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
-import Sort from '../Sort';
-import Header from '../Header';
+import Sort from '../Sort/Sort';
+import Header from '../Header/Header';
 import {getUsers} from '../../redux/actions/getUsers';
-import {User} from '../User';
+import {User} from '../User/User';
 import './Users.scss';
 
 function Users({listOfUsers, getUsers}) {
@@ -26,7 +26,10 @@ function Users({listOfUsers, getUsers}) {
                     <tr>
                         <th>
                             id
-                            <Sort className='Users-SortIcon' setUsers = {setUsers} users = {users}/>
+                            <Sort
+                                className='Users-SortIcon'
+                                setUsers = {setUsers}
+                                users = {users}/>
                         </th>
                         <th>username</th>
                         <th>first name</th>

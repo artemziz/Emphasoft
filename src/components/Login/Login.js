@@ -38,7 +38,7 @@ class Login extends React.Component{
         
         if(this.state.password.length>128 || !passwordPattern.test(this.state.password)){
             this.setState({
-                passwordError:'Field is required.128 characters or fewer. Letters, digits and @/./+/-/_ only'
+                passwordError:'Field is required.128 characters or fewer'
             })
             isError = true;
         }else{
@@ -63,9 +63,9 @@ class Login extends React.Component{
             this.props.userAuth({
                 username:this.state.username,
                 password:this.state.password
-            }).then(({error}) =>{
-                if(error) this.setState({
-                    authError:error
+            }).then((res) =>{
+                if(res) this.setState({
+                    authError:res.error
                 })
             });
             
