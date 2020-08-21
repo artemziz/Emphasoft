@@ -1,26 +1,25 @@
 import {loginUser} from '../actions/login';
 
-export const userAuth = user =>{
-    return async dispatch =>{
-        let response = await fetch('http://emphasoft-test-assignment.herokuapp.com/api-token-auth/',{
-            method:'POST',
+export const userAuth = (user) =>{
+    return async (dispatch) =>{
+        const response = await fetch('http://emphasoft-test-assignment.herokuapp.com/api-token-auth/', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Accept: 'application/json',
+                'Accept': 'application/json',
             },
             body: JSON.stringify({
-                username:user.username,
-                password:user.password
-            })
+                username: user.username,
+                password: user.password,
+            }),
         });
-        let data = await response.json();
-        
-        if(!!data.token){
-            dispatch(loginUser(data.token));
-        }else{
-            return {error:'Wrong username or password'}
-        }
+        const data = await response.json();
 
-    }
-}
+        if (!!data.token) {
+            dispatch(loginUser(data.token));
+        } else {
+            return {error: 'Wrong username or password'};
+        }
+    };
+};
 

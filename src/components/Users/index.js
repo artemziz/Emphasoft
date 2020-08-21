@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
 import Sort from '../Sort';
@@ -7,18 +7,18 @@ import {getUsers} from '../../redux/actions/getUsers';
 import {User} from '../User';
 import './Users.scss';
 
-function Users({listOfUsers,getUsers}){
-    const[users,setUsers] = useState([]);
+function Users({listOfUsers, getUsers}) {
+    const [users, setUsers] = useState([]);
 
     useEffect(()=>{
         getUsers();
-    },[]);
-    
+    }, []);
+
     useEffect(()=>{
         setUsers(listOfUsers);
-    },[listOfUsers]);
-    
-    return(
+    }, [listOfUsers]);
+
+    return (
         <div className="Users">
             <Header setUsers = {setUsers} users = {users}/>
             <table cellSpacing="0" className="Users-table">
@@ -37,25 +37,25 @@ function Users({listOfUsers,getUsers}){
                     </tr>
                 </thead>
                 <tbody className='Users-tbody'>
-                    {users.map(user => {
-                        return <User key={user.id} user={user}/>
-                        })
-                    
+                    {users.map((user) => {
+                        return <User key={user.id} user={user}/>;
+                    })
+
                     }
-                </tbody>         
+                </tbody>
             </table>
         </div>
-    )
+    );
 }
 
 const mapStateToProps = (state) =>{
-    return{
-        listOfUsers:state.Users.listOfUsers
-    }
-}
+    return {
+        listOfUsers: state.Users.listOfUsers,
+    };
+};
 
 const mapDispatchToProps = {
-    getUsers
-}
+    getUsers,
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(Users);
+export default connect(mapStateToProps, mapDispatchToProps)(Users);
